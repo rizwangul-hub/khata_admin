@@ -1,13 +1,9 @@
 import axios from 'axios';
 
-const fallbackApiUrl = window.location.hostname.includes('vercel.app')
-  ? window.location.origin.replace(/:\d+$/, '')
-  : 'http://localhost:5000/api';
-
-export const API_BASE_URL = (import.meta as any).env?.VITE_API_URL || fallbackApiUrl;
+export const API_BASE_URL = (import.meta as any).env?.VITE_API_URL || 'https://khata-backend-lqos.vercel.app/api';
 
 export const adminClient = axios.create({
-  baseURL: `${API_BASE_URL.replace(/\/$/, '')}/admin`,
+  baseURL: `${API_BASE_URL}/admin`,
   headers: {
     'Content-Type': 'application/json',
   },
